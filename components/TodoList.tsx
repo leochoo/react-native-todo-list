@@ -76,6 +76,16 @@ const TodoList = () => {
     setTodos(data);
   }, []);
 
+  const createTodoHandler = (text: string) => {
+    const newTodo: TodoType = {
+      id: Math.floor(Math.random() * 100),
+      text,
+      isComplete: false,
+    };
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+    // setIsAddMode(false);
+  };
+
   const deleteTodoHandler = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -83,12 +93,16 @@ const TodoList = () => {
   const renderTodoItem: ListRenderItem<TodoType> = ({ item }) => (
     <TodoItem item={item} deleteTodo={deleteTodoHandler} />
   );
+
   return (
-    <FlatList
-      keyExtractor={(item) => item.id.toString()}
-      data={todos}
-      renderItem={renderTodoItem}
-    ></FlatList>
+    <>
+      <TodoInput createTodo={createTodoHandler} />
+      <FlatList
+        keyExtractor={(item) => item.id.toString()}
+        data={todos}
+        renderItem={renderTodoItem}
+      ></FlatList>
+    </>
   );
 };
 

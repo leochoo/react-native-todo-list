@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Input, Text, Box, Button, Center } from "native-base";
 
-const TodoInput = () => {
+const TodoInput = ({ createTodo }: { createTodo: (text: string) => void }) => {
+  // useref text input
+  const inputRef = useRef<HTMLInputElement>();
+
   return (
     <Input
       borderWidth={2}
@@ -13,7 +16,10 @@ const TodoInput = () => {
         md: "25%",
       }}
       m={3}
-      InputRightElement={<Button>Add</Button>}
+      ref={inputRef}
+      InputRightElement={
+        <Button onPress={() => createTodo(inputRef.current!.value)}>Add</Button>
+      }
     />
   );
 };
