@@ -11,12 +11,15 @@ Todo list app implemented using following stack
 
 ### Set Up NativeBase
 
-[] Install NativeBase
+[x] Install NativeBase
 
 - https://docs.nativebase.io/install-expo
   `npm install native-base styled-components styled-system`
   `expo install react-native-svg`
   `expo install react-native-safe-area-context`
+
+- Styled System doc
+  https://styled-system.com/api/
 
 [] Implement UI elements
 

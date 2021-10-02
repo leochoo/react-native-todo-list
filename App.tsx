@@ -1,27 +1,26 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { NativeBaseProvider, Box } from "native-base";
+import {
+  VStack,
+  HStack,
+  NativeBaseProvider,
+  Box,
+  Center,
+  Button,
+} from "native-base";
 
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
+//`px` here was the shorthand for `paddingX `and it comes from https://docs.nativebase.io/utility-props
 export default function App() {
   return (
     <NativeBaseProvider>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <Box flex={1} paddingX="3" safeAreaTop={16}>
+        <VStack space={4} alignItems="center">
+          <TodoInput />
+          <TodoList />
+        </VStack>
+      </Box>
     </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
