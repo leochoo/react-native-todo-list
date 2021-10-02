@@ -81,7 +81,7 @@ const TodoList = () => {
   };
 
   const renderTodoItem: ListRenderItem<TodoType> = ({ item }) => (
-    <TodoItem item={item} deleteTodoHandler={deleteTodoHandler} />
+    <TodoItem item={item} deleteTodo={deleteTodoHandler} />
   );
   return (
     <FlatList
