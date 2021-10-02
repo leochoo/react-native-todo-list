@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ListRenderItem } from "react-native";
 import {
   Input,
@@ -71,10 +71,34 @@ const TodoList = () => {
   const [todos, setTodos] = useState<TodoType[]>([]);
   const [isAddMode, setIsAddMode] = useState(false);
 
-  const renderTodoItem: ListRenderItem<TodoType> = ({ item }) => (
-    <TodoItem item={item} />
+  // load "data" into "todos" on first render
+  useEffect(() => {
+    setTodos(data);
+  }, []);
+
+  const deleteTodoHandler = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  interface TodoListProps {
+    todos: TodoType[];
+    deleteTodoHandler: (id: number) => void;
+  }
+
+  const renderTodoItem: ListRenderItem<TodoListProps> = ({
+    item,
+    deleteTodoHandler,
+  }: {
+    item: TodoType;
+    deleteTodoHandler: (id: number) => void;
+  }) => <TodoItem item={item} deleteTodoHandler={deleteTodoHandler} />;
+  return (
+    <FlatList
+      keyExtractor={(item) => item.id.toString()}
+      data={todos}
+      renderItem={renderTodoItem((item) => item.id)}
+    ></FlatList>
   );
-  return <FlatList data={data} renderItem={renderTodoItem}></FlatList>;
 };
 
 export default TodoList;
