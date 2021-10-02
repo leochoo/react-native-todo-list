@@ -1,9 +1,18 @@
 import React, { useState, useRef } from "react";
 import { Input, Text, Box, Button, Center } from "native-base";
+import TodoType from "../types/TodoType.types";
 
 const TodoInput = ({ createTodo }: { createTodo: (text: string) => void }) => {
   // useref text input
-  const inputRef = useRef<HTMLInputElement>();
+  const todoText = useRef<HTMLInputElement>();
+
+  // Events
+  const addTodo() => {
+    event.preventDefault();
+    const next = [...todos, todoText.current.value];
+    setTodos(next);
+    localStorage.setItem("todos", JSON.stringify(next));
+  }
 
   return (
     <Input
@@ -18,7 +27,7 @@ const TodoInput = ({ createTodo }: { createTodo: (text: string) => void }) => {
       m={3}
       ref={inputRef}
       InputRightElement={
-        <Button onPress={() => createTodo(inputRef.current!.value)}>Add</Button>
+        <Button onPress={addTodo}>Add</Button>
       }
     />
   );

@@ -21,17 +21,17 @@ Todo list app implemented using following stack
 - Styled System doc
   https://styled-system.com/api/
 
-[] Implement UI elements
+[x] Implement UI elements
 
 ### Basics
 
-[] Text Input
-[] Add Button
-[] Display list
+[x] Text Input
+[x] Add Button
+[x] Display list
 [] CREATE - todo
 [] READ - todo
 [] UPDATE - todo
-[] DELETE - todo
+[x] DELETE - todo
 
 ### Redux Toolkit
 

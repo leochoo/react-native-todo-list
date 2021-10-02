@@ -78,7 +78,7 @@ const TodoList = () => {
 
   const createTodoHandler = (text: string) => {
     const newTodo: TodoType = {
-      id: Math.floor(Math.random() * 100),
+      id: todos.length,
       text,
       isComplete: false,
     };
