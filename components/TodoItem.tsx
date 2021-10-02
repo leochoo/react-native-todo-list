@@ -13,9 +13,15 @@ import {
 
 import TodoType from "../types/TodoType.types";
 
-const TodoItem = ({ item, deleteTodoHandler }: { item: TodoType; deleteTodoHandler: (id: number) => void; } => {
+const TodoItem = ({
+  item,
+  deleteTodoHandler,
+}: {
+  item: TodoType;
+  deleteTodoHandler: (id: number) => void;
+}) => {
   return (
-    <TouchableOpacity onPress={removeHandler(item.id)}>
+    <TouchableOpacity onPress={() => deleteTodoHandler(item.id)}>
       <Box
         borderBottomWidth="1"
         _dark={{

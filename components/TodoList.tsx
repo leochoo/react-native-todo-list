@@ -80,23 +80,14 @@ const TodoList = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  interface TodoListProps {
-    todos: TodoType[];
-    deleteTodoHandler: (id: number) => void;
-  }
-
-  const renderTodoItem: ListRenderItem<TodoListProps> = ({
-    item,
-    deleteTodoHandler,
-  }: {
-    item: TodoType;
-    deleteTodoHandler: (id: number) => void;
-  }) => <TodoItem item={item} deleteTodoHandler={deleteTodoHandler} />;
+  const renderTodoItem: ListRenderItem<TodoType> = ({ item }) => (
+    <TodoItem item={item} deleteTodoHandler={deleteTodoHandler} />
+  );
   return (
     <FlatList
       keyExtractor={(item) => item.id.toString()}
       data={todos}
-      renderItem={renderTodoItem((item) => item.id)}
+      renderItem={renderTodoItem}
     ></FlatList>
   );
 };
