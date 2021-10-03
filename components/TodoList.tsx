@@ -80,6 +80,10 @@ const TodoList = () => {
         )}
         leftOpenValue={75}
         rightOpenValue={-150}
+        previewRowKey={"0"}
+        previewOpenValue={-40}
+        previewOpenDelay={3000}
+        // onRowDidOpen={onRowDidOpen}
       />
     </>
   );
@@ -87,7 +91,7 @@ const TodoList = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "gray",
     flex: 1,
   },
   backTextWhite: {
