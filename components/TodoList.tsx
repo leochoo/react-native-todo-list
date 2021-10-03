@@ -1,33 +1,61 @@
-import React, { useState } from "react";
-
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { ListRenderItem } from "react-native";
+import {
+  Input,
+  Text,
+  Box,
+  Center,
+  FlatList,
+  VStack,
+  HStack,
+} from "native-base";
 
 import TodoInput from "./TodoInput";
 import TodoItem from "./TodoItem";
 
-interface TodoItem {
-  id: number;
-  text: string;
-  isComplete: boolean;
-}
+import TodoType from "../types/TodoType.types";
+
+import mockTodos from "../mock/mockTodos.json";
+import uuid from "react-native-uuid";
+
 const TodoList = () => {
-  const [todos, setTodos] = useState<TodoItem[]>([]);
+  const data: TodoType[] = mockTodos;
+  const [todos, setTodos] = useState<TodoType[]>([]);
   const [isAddMode, setIsAddMode] = useState(false);
 
+  // load "data" into "todos" on first render
+  useEffect(() => {
+    setTodos(data);
+  }, []);
+
+  const createTodoHandler = (text: string) => {
+    const newTodo: TodoType = {
+      id: uuid.v4() as string, // this weirdly returns string and number array in v4 so need to cast to string
+      text,
+      isComplete: false,
+    };
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+    // setIsAddMode(false);
+  };
+
+  const deleteTodoHandler = (id: string) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const renderTodoItem: ListRenderItem<TodoType> = ({ item }) => (
+    <TodoItem item={item} deleteTodo={deleteTodoHandler} />
+  );
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <>
+      <TodoInput createTodo={createTodoHandler} />
+      <FlatList
+        keyExtractor={(item) => item.id.toString()}
+        data={todos}
+        renderItem={renderTodoItem}
+      ></FlatList>
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default TodoList;
