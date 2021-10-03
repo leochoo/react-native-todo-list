@@ -13,7 +13,6 @@ Todo list app implemented using following stack
 
 [x] Install NativeBase
 
-
 - https://docs.nativebase.io/install-expo
   `npm install native-base styled-components styled-system`
   `expo install react-native-svg`
@@ -22,17 +21,17 @@ Todo list app implemented using following stack
 - Styled System doc
   https://styled-system.com/api/
 
-[x] Implement UI elements
+- [x] Implement UI elements
 
 ### Basics
 
-[x] Text Input
-[x] Add Button
-[x] Display list
-[] CREATE - todo
-[] READ - todo
-[] UPDATE - todo
-[x] DELETE - todo
+- [x] Text Input
+- [x] Add Button
+- [x] Display list
+- [x] CREATE - todo
+- [ ] READ - todo
+- [ ] UPDATE - todo
+- [x] DELETE - todo
 
 ### Redux Toolkit
 
