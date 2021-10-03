@@ -29,7 +29,7 @@ Todo list app implemented using following stack
 - [x] Add Button
 - [x] Display list
 - [x] CREATE - todo
-- [ ] READ - todo
+- [x] READ - todo
 - [ ] UPDATE - todo
 - [x] DELETE - todo
 
