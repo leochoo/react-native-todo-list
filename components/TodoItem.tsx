@@ -88,8 +88,10 @@ const styles = StyleSheet.create({
   rowFront: {
     alignItems: "center",
     backgroundColor: "#CCC",
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
+    // borderBottomColor: "black",
+    // borderBottomWidth: 1,
+    // borderColor: "red",
+    borderWidth: 1,
     justifyContent: "center",
     height: 50,
   },
