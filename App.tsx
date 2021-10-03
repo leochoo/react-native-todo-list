@@ -14,10 +14,15 @@ import TodoList from "./components/TodoList";
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Box flex={1} paddingX="3" safeAreaTop={16}>
-        <VStack space={4} alignItems="center">
-          <TodoList />
-        </VStack>
+      <Box
+        flex={1}
+        paddingX="3"
+        safeAreaTop={16}
+        safeAreaBottom={10}
+        alignItems="center"
+      >
+        <TodoList />
+        {/* <VStack space={4} alignItems="center"></VStack> */}
       </Box>
     </NativeBaseProvider>
   );

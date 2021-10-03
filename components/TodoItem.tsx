@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     // borderBottomColor: "black",
     // borderBottomWidth: 1,
     // borderColor: "red",
-    borderWidth: 1,
+    // borderWidth: 1,
     justifyContent: "center",
     height: 50,
   },
