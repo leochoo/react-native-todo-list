@@ -58,6 +58,8 @@ const TodoList = () => {
       <TodoInput createTodo={createTodoHandler} />
       <SwipeListView
         useFlatList={true}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
         data={todos}
         renderItem={renderTodoItem}
         keyExtractor={(item) => item.id}
