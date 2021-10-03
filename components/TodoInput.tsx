@@ -3,16 +3,12 @@ import { Input, Text, Box, Button, Center } from "native-base";
 import TodoType from "../types/TodoType.types";
 
 const TodoInput = ({ createTodo }: { createTodo: (text: string) => void }) => {
-  // useref text input
-  const todoText = useRef<HTMLInputElement>();
+  const [text, setText] = useState("");
 
-  // Events
-  const addTodo() => {
-    event.preventDefault();
-    const next = [...todos, todoText.current.value];
-    setTodos(next);
-    localStorage.setItem("todos", JSON.stringify(next));
-  }
+  const createTodoHandler = () => {
+    createTodo(text);
+    setText("");
+  };
 
   return (
     <Input
@@ -25,10 +21,9 @@ const TodoInput = ({ createTodo }: { createTodo: (text: string) => void }) => {
         md: "25%",
       }}
       m={3}
-      ref={inputRef}
-      InputRightElement={
-        <Button onPress={addTodo}>Add</Button>
-      }
+      value={text}
+      onChangeText={(text) => setText(text)}
+      InputRightElement={<Button onPress={createTodoHandler}>Add</Button>}
     />
   );
 };

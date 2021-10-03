@@ -18,7 +18,7 @@ const TodoItem = ({
   deleteTodo,
 }: {
   item: TodoType;
-  deleteTodo: (id: number) => void;
+  deleteTodo: (id: string) => void;
 }) => {
   return (
     <TouchableOpacity onPress={() => deleteTodo(item.id)}>

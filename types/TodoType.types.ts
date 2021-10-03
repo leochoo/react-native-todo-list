@@ -1,5 +1,5 @@
 export default interface TodoType {
-  id: number;
+  id: string;
   text: string;
   isComplete: boolean;
 }
