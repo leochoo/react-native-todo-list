@@ -1,5 +1,9 @@
 import React from "react";
-import { ListRenderItem, TouchableOpacity } from "react-native";
+import {
+  ListRenderItem,
+  TouchableOpacity,
+  TouchableHighlight,
+} from "react-native";
 
 import {
   Input,
@@ -21,7 +25,10 @@ const TodoItem = ({
   deleteTodo: (id: string) => void;
 }) => {
   return (
-    <TouchableOpacity onPress={() => deleteTodo(item.id)}>
+    <TouchableHighlight
+      style={{ backgroundColor: "#AAA" }}
+      onPress={() => deleteTodo(item.id)}
+    >
       <Box
         borderBottomWidth="1"
         _dark={{
@@ -64,7 +71,7 @@ const TodoItem = ({
           </Text>
         </HStack>
       </Box>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 

@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { ListRenderItem } from "react-native";
+import {
+  View,
+  StyleSheet,
+  ListRenderItem,
+  TouchableOpacity,
+} from "react-native";
 import {
   Input,
   Text,
@@ -9,6 +14,8 @@ import {
   VStack,
   HStack,
 } from "native-base";
+
+import { SwipeListView } from "react-native-swipe-list-view";
 
 import TodoInput from "./TodoInput";
 import TodoItem from "./TodoItem";
@@ -49,13 +56,75 @@ const TodoList = () => {
   return (
     <>
       <TodoInput createTodo={createTodoHandler} />
-      <FlatList
-        keyExtractor={(item) => item.id.toString()}
+      <SwipeListView
+        useFlatList={true}
         data={todos}
         renderItem={renderTodoItem}
-      ></FlatList>
+        keyExtractor={(item) => item.id}
+        renderHiddenItem={(data, rowMap) => (
+          <Box style={styles.rowBack}>
+            <Text>Left</Text>
+            <TouchableOpacity
+              style={[styles.backRightBtn, styles.backRightBtnLeft]}
+              onPress={() => console.log(rowMap, data.item.id)}
+            >
+              <Text style={styles.backTextWhite}>Close</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.backRightBtn, styles.backRightBtnRight]}
+              onPress={() => console.log(rowMap, data.item.id)}
+            >
+              <Text style={styles.backTextWhite}>Delete</Text>
+            </TouchableOpacity>
+          </Box>
+        )}
+        leftOpenValue={75}
+        rightOpenValue={-150}
+      />
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+    flex: 1,
+  },
+  backTextWhite: {
+    color: "#FFF",
+  },
+  rowFront: {
+    alignItems: "center",
+    backgroundColor: "#CCC",
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
+    justifyContent: "center",
+    height: 50,
+  },
+  rowBack: {
+    alignItems: "center",
+    backgroundColor: "#DDD",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingLeft: 15,
+  },
+  backRightBtn: {
+    alignItems: "center",
+    bottom: 0,
+    justifyContent: "center",
+    position: "absolute",
+    top: 0,
+    width: 75,
+  },
+  backRightBtnLeft: {
+    backgroundColor: "blue",
+    right: 75,
+  },
+  backRightBtnRight: {
+    backgroundColor: "red",
+    right: 0,
+  },
+});
 
 export default TodoList;
